@@ -27,5 +27,32 @@
  *   // => { totalChai: 0, totalRevenue: 0 }
  */
 export function chaiTapriRevenue(customers) {
-  // Your code here
+
+  if (
+    !Number.isFinite(customers) ||
+    customers <= 0 ||
+    !Number.isInteger(customers)
+  ) {
+    return { totalChai: 0, totalRevenue: 0 };
+  }
+
+  let normalPrice = 10;
+  let specialPrice = 15;
+
+  let totalRevenue = 0;
+
+  for (let i = 1; i <= customers; i++) {
+
+    if (i % 3 === 0) {
+      totalRevenue += specialPrice;
+    } else {
+      totalRevenue += normalPrice;
+    }
+
+  }
+
+  return {
+    totalChai: customers,
+    totalRevenue: totalRevenue
+  };
 }
